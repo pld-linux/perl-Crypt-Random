@@ -1,8 +1,8 @@
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	Crypt
 %define		pnam	Random
-Summary:	Crypt-Random perl module
-Summary(pl):	Modu³ perla Crypt-Random
+Summary:	Crypt::Random perl module
+Summary(pl):	Modu³ perla Crypt::Random
 Name:		perl-Crypt-Random
 Version:	1.11
 Release:	2
@@ -15,10 +15,10 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Crypt-Random perl module.
+Crypt::Random perl module.
 
 %description -l pl
-Modu³ perla Crypt-Random.
+Modu³ perla Crypt::Random.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
