@@ -5,20 +5,24 @@ Summary:	Crypt::Random perl module
 Summary(pl):	Modu³ perla Crypt::Random
 Name:		perl-Crypt-Random
 Version:	1.11
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-BuildRequires:	rpm-perlprov >= 3.0.3-16
 BuildRequires:	perl >= 5.6.1
+BuildRequires:	perl-Class-Loader >= 2.00
+BuildRequires:	perl-Math-Pari >= 2.001804
+BuildRequires:	rpm-perlprov >= 3.0.3-16
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Crypt::Random perl module.
+Crypt::Random Perl module - Cryptographically Secure, True Random
+Number Generator.
 
 %description -l pl
-Modu³ perla Crypt::Random.
+Modu³ Perla Crypt::Random - Bezpieczny Kryptograficznie, Prawdziwy
+Generator Liczb Losowych.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
@@ -32,14 +36,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf Changes README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc Changes README
+%attr(755,root,root) %{_bindir}/*
 %{perl_sitelib}/Crypt/Random.pm
-%{perl_sitelib}/Crypt/Random/Generator.pm
+%{perl_sitelib}/Crypt/Random
+#%{perl_sitelib}/Crypt/Random/Generator.pm
 %{_mandir}/man3/*
