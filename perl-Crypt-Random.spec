@@ -4,8 +4,8 @@
 Summary:	Crypt::Random perl module
 Summary(pl):	Modu³ perla Crypt::Random
 Name:		perl-Crypt-Random
-Version:	1.11
-Release:	3
+Version:	1.12
+Release:	1
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
