@@ -3,8 +3,8 @@
 %bcond_without	tests	# do not perform "make test"
 #
 %include	/usr/lib/rpm/macros.perl
-%define	pdir	Crypt
-%define	pnam	Random
+%define		pdir	Crypt
+%define		pnam	Random
 Summary:	Crypt::Random - cryptographically secure, true random number generator
 Summary(pl):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
 Name:		perl-Crypt-Random
