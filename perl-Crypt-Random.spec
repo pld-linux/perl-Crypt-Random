@@ -1,10 +1,14 @@
+#
+# Conditional build:
+# _without_tests - do not perform "make test"
+#
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	Crypt
 %define		pnam	Random
-Summary:	Crypt::Random perl module
-Summary(pl):	Modu³ perla Crypt::Random
+Summary:	Crypt::Random - cryptographically secure, true random number generator
+Summary(pl):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
 Name:		perl-Crypt-Random
-Version:	1.12
+Version:	1.13
 Release:	2
 License:	GPL
 Group:		Development/Languages/Perl
@@ -17,12 +21,18 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Crypt::Random Perl module - Cryptographically Secure, True Random
-Number Generator.
+Crypt::Random is an interface module to the /dev/random device found
+on most modern Unix systems. The /dev/random driver gathers
+environmental noise from various non-deterministic sources including
+inter-keyboard timings and inter-interrupt timings that occur within
+the operating system environment.
 
 %description -l pl
-Modu³ Perla Crypt::Random - Bezpieczny Kryptograficznie, Prawdziwy
-Generator Liczb Losowych.
+Modu³ Perla Crypt::Random stanowi interfejs do urz±dzenia /dev/random
+znajduj±cego siê w wiêkszo¶ci wspó³czesnych systemów uniksowych.
+Sterownik /dev/random gromadzi szum pochodz±cy z ró¿nych
+niedeterministycznych ¼róde³, w³±czaj±c w to: przebiegi czasowe
+klawiatury i przerwañ wystêpuj±ce w systemie operacyjnym.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
@@ -31,6 +41,8 @@ Generator Liczb Losowych.
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor 
 %{__make}
+
+%{!?_without_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
