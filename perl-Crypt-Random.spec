@@ -8,13 +8,13 @@
 Summary:	Crypt::Random - cryptographically secure, true random number generator
 Summary(pl):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
 Name:		perl-Crypt-Random
-Version:	1.13
-Release:	4
+Version:	1.20
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	7e01bb787041c52557698a03fd801098
+# Source0-md5:	d39223083dee595ff6949655e9339761
 Patch0:		%{name}-no_Class_Loader.patch
 %if %{with tests}
 BuildRequires:	perl-Math-Pari >= 2.001804
