@@ -1,0 +1,56 @@
+diff -urN Crypt-Random-1.13/lib/Crypt/Random.pm Crypt-Random-1.13.no_Class_Loader/lib/Crypt/Random.pm
+--- Crypt-Random-1.13/lib/Crypt/Random.pm	2003-03-11 19:41:13.000000000 +0100
++++ Crypt-Random-1.13.no_Class_Loader/lib/Crypt/Random.pm	2004-05-17 19:22:19.491438744 +0200
+@@ -14,7 +14,7 @@
+ use Math::Pari qw(PARI floor Mod pari2pv pari2num lift); 
+ use Carp; 
+ use Data::Dumper;
+-use Class::Loader;
++#use Class::Loader;
+ use Crypt::Random::Generator;
+ *import      = \&Exporter::import;
+ 
+@@ -42,10 +42,12 @@
+     local $| = 1;
+ 
+     my $provider = _pickprovider(%params);
+-    my $loader = new Class::Loader;
+-    my $po = $loader->_load ( Module => "Crypt::Random::Provider::$provider", 
+-                              Args => [ %params ] ) 
+-        or die "Unable to load module Crypt::Random::Provider::$provider - $!";
++#   my $loader = new Class::Loader;
++#   my $po = $loader->_load ( Module => "Crypt::Random::Provider::$provider", 
++#                             Args => [ %params ] ) 
++	eval "require Crypt::Random::Provider::$provider"
++        or die "Unable to load module Crypt::Random::Provider::$provider - $@";
++	my $po = "Crypt::Random::Provider::$provider"->new(%params);
+     my $r = $po->get_data( %params );
+ 
+     my $size     = $params{Size};
+@@ -85,9 +87,12 @@
+     $params{Verbosity} = 0 unless $params{Verbosity};
+ 
+     my $provider = _pickprovider(%params); 
+-    my $loader = new Class::Loader;
+-    my $po = $loader->_load ( Module => "Crypt::Random::Provider::$provider", 
+-                              Args => [ %params ] );
++#   my $loader = new Class::Loader;
++#   my $po = $loader->_load ( Module => "Crypt::Random::Provider::$provider", 
++#                             Args => [ %params ] );
++	eval "require Crypt::Random::Provider::$provider"
++        or die "Unable to load module Crypt::Random::Provider::$provider - $@";
++	my $po = "Crypt::Random::Provider::$provider"->new(%params);
+     return $po->get_data( %params );
+ 
+ 
+diff -urN Crypt-Random-1.13/Makefile.PL Crypt-Random-1.13.no_Class_Loader/Makefile.PL
+--- Crypt-Random-1.13/Makefile.PL	2001-06-22 05:44:50.000000000 +0200
++++ Crypt-Random-1.13.no_Class_Loader/Makefile.PL	2004-05-17 19:20:58.328777344 +0200
+@@ -7,6 +7,6 @@
+     'VERSION_FROM' => 'lib/Crypt/Random.pm',
+     'EXE_FILES'    => [ 'bin/makerandom' ],
+     'PREREQ_PM'    => { 'Math::Pari' => '2.001804', 
+-                        'Class::Loader' => '2.00' 
++#                       'Class::Loader' => '2.00' 
+                       } 
+ );
