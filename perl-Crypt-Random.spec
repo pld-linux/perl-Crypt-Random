@@ -1,7 +1,7 @@
-#
+
 # Conditional build:
-# _without_tests - do not perform "make test"
-#
+%bcond_without	tests	# do not perform "make test"
+
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	Crypt
 %define		pnam	Random
@@ -14,10 +14,12 @@ License:	GPL
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	7e01bb787041c52557698a03fd801098
-BuildRequires:	perl-devel >= 5.6.1
+%if %{with tests}
 BuildRequires:	perl-Class-Loader >= 2.00
 BuildRequires:	perl-Math-Pari >= 2.001804
+%endif
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	perl-devel >= 5.6.1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,12 +45,13 @@ klawiatury i przerwañ wystêpuj±ce w systemie operacyjnym.
 	INSTALLDIRS=vendor
 %{__make}
 
-%{!?_without_tests:%{__make} test}
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
