@@ -10,7 +10,8 @@ Summary(pl):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator li
 Name:		perl-Crypt-Random
 Version:	1.13
 Release:	2
-License:	GPL
+# same as perl
+License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	7e01bb787041c52557698a03fd801098
