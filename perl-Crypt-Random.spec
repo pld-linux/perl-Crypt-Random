@@ -5,14 +5,14 @@ Summary:	Crypt::Random perl module
 Summary(pl):	Modu³ perla Crypt::Random
 Name:		perl-Crypt-Random
 Version:	1.12
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 BuildRequires:	perl >= 5.6.1
 BuildRequires:	perl-Class-Loader >= 2.00
 BuildRequires:	perl-Math-Pari >= 2.001804
-BuildRequires:	rpm-perlprov >= 3.0.3-16
+BuildRequires:	rpm-perlprov >= 4.1-13
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -28,7 +28,8 @@ Generator Liczb Losowych.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} Makefile.PL
+%{__perl} Makefile.PL \
+	INSTALLDIRS=vendor 
 %{__make}
 
 %install
@@ -43,7 +44,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changes README
 %attr(755,root,root) %{_bindir}/*
-%{perl_sitelib}/Crypt/Random.pm
-%{perl_sitelib}/Crypt/Random
-#%%{perl_sitelib}/Crypt/Random/Generator.pm
+%{perl_vendorlib}/Crypt/Random.pm
+%{perl_vendorlib}/Crypt/Random
+#%%{perl_vendorlib}/Crypt/Random/Generator.pm
 %{_mandir}/man3/*
