@@ -5,7 +5,7 @@ Summary:	Crypt-Random perl module
 Summary(pl):	Modu³ perla Crypt-Random
 Name:		perl-Crypt-Random
 Version:	1.11
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
@@ -41,4 +41,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz
 %{perl_sitelib}/Crypt/Random.pm
+%{perl_sitelib}/Crypt/Random/Generator.pm
 %{_mandir}/man3/*
