@@ -45,5 +45,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{perl_sitelib}/Crypt/Random.pm
 %{perl_sitelib}/Crypt/Random
-#%{perl_sitelib}/Crypt/Random/Generator.pm
+#%%{perl_sitelib}/Crypt/Random/Generator.pm
 %{_mandir}/man3/*
