@@ -40,7 +40,7 @@ klawiatury i przerwañ wystêpuj±ce w systemie operacyjnym.
 
 %build
 %{__perl} Makefile.PL \
-	INSTALLDIRS=vendor 
+	INSTALLDIRS=vendor
 %{__make}
 
 %{!?_without_tests:%{__make} test}
