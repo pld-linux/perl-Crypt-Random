@@ -6,7 +6,7 @@
 %define		pdir	Crypt
 %define		pnam	Random
 Summary:	Crypt::Random - cryptographically secure, true random number generator
-Summary(pl):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
+Summary(pl.UTF-8):   Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
 Name:		perl-Crypt-Random
 Version:	1.25
 Release:	1
@@ -31,12 +31,12 @@ environmental noise from various non-deterministic sources including
 inter-keyboard timings and inter-interrupt timings that occur within
 the operating system environment.
 
-%description -l pl
-Modu³ Perla Crypt::Random stanowi interfejs do urz±dzenia /dev/random
-znajduj±cego siê w wiêkszo¶ci wspó³czesnych systemów uniksowych.
-Sterownik /dev/random gromadzi szum pochodz±cy z ró¿nych
-niedeterministycznych ¼róde³, w³±czaj±c w to: przebiegi czasowe
-klawiatury i przerwañ wystêpuj±ce w systemie operacyjnym.
+%description -l pl.UTF-8
+ModuÅ‚ Perla Crypt::Random stanowi interfejs do urzÄ…dzenia /dev/random
+znajdujÄ…cego siÄ™ w wiÄ™kszoÅ›ci wspÃ³Å‚czesnych systemÃ³w uniksowych.
+Sterownik /dev/random gromadzi szum pochodzÄ…cy z rÃ³Å¼nych
+niedeterministycznych ÅºrÃ³deÅ‚, wÅ‚Ä…czajÄ…c w to: przebiegi czasowe
+klawiatury i przerwaÅ„ wystÄ™pujÄ…ce w systemie operacyjnym.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
