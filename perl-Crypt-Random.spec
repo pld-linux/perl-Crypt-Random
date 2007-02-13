@@ -6,7 +6,7 @@
 %define		pdir	Crypt
 %define		pnam	Random
 Summary:	Crypt::Random - cryptographically secure, true random number generator
-Summary(pl.UTF-8):   Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
+Summary(pl.UTF-8):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
 Name:		perl-Crypt-Random
 Version:	1.25
 Release:	1
