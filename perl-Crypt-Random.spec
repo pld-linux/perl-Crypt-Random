@@ -1,10 +1,10 @@
 #
 # Conditional build:
 %bcond_without	tests	# do not perform "make test"
-#
-%include	/usr/lib/rpm/macros.perl
+
 %define		pdir	Crypt
 %define		pnam	Random
+%include	/usr/lib/rpm/macros.perl
 Summary:	Crypt::Random - cryptographically secure, true random number generator
 Summary(pl.UTF-8):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
 Name:		perl-Crypt-Random
@@ -16,11 +16,12 @@ Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	5730c9d5acdd698790216d354ffb0513
 Patch0:		%{name}-no_Class_Loader.patch
+URL:		http://search.cpan.org/dist/Crypt-Random/
+BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Math-Pari >= 2.001804
 %endif
-BuildRequires:	rpm-perlprov >= 4.1-13
-BuildRequires:	perl-devel >= 1:5.8.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
