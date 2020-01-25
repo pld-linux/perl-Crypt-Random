@@ -4,7 +4,6 @@
 
 %define		pdir	Crypt
 %define		pnam	Random
-%include	/usr/lib/rpm/macros.perl
 Summary:	Crypt::Random - cryptographically secure, true random number generator
 Summary(pl.UTF-8):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
 Name:		perl-Crypt-Random
