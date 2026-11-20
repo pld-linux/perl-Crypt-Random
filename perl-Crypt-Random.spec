@@ -7,20 +7,24 @@
 Summary:	Crypt::Random - cryptographically secure, true random number generator
 Summary(pl.UTF-8):	Crypt::Random - bezpieczny kryptograficznie, prawdziwy generator liczb losowych
 Name:		perl-Crypt-Random
-Version:	1.25
-Release:	4
+Version:	1.57
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	5730c9d5acdd698790216d354ffb0513
-Patch0:		%{name}-no_Class_Loader.patch
-URL:		http://search.cpan.org/dist/Crypt-Random/
+Source0:	https://www.cpan.org/authors/id/T/TI/TIMLEGGE/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	a7e704688eb08211de0e6885617e8982
+URL:		https://metacpan.org/dist/Crypt-Random
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
+BuildRequires:	perl-Class-Loader >= 2.00
+BuildRequires:	perl-Crypt-URandom
 BuildRequires:	perl-Math-Pari >= 2.001804
+BuildRequires:	perl-Statistics-ChiSquare >= 1.0000
 %endif
+Requires:	perl-Class-Loader >= 2.00
+Requires:	perl-Math-Pari >= 2.001804
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,7 +44,6 @@ klawiatury i przerwań występujące w systemie operacyjnym.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
-%patch -P0 -p1
 
 %build
 %{__perl} Makefile.PL \
@@ -60,9 +63,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes README
+%doc Changes README SECURITY.md
 %attr(755,root,root) %{_bindir}/*
 %{perl_vendorlib}/Crypt/Random.pm
 %{perl_vendorlib}/Crypt/Random
-#%%{perl_vendorlib}/Crypt/Random/Generator.pm
 %{_mandir}/man3/*
