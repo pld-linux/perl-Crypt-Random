@@ -1,0 +1,16 @@
+Math::Pari turns a numified Upper/Lower beyond IV range (32-bit: > 2**31) into t_REAL,
+then t_INT % t_REAL dies; a fresh string makes PARI parse the exact integer.
+
+--- Crypt-Random-1.57.orig/lib/Crypt/Random.pm
++++ Crypt-Random-1.57/lib/Crypt/Random.pm
+@@ -88,8 +88,8 @@
+ 
+     my ( %params ) = @_; 
+ 
+-    my $a  = $params{ Lower } || 0; $a = PARI ( $a ); 
+-    my $b  = $params{ Upper }; $b = PARI ( $b );
++    my $a  = $params{ Lower } || 0; $a = PARI ( "$a" ); 
++    my $b  = $params{ Upper }; $b = PARI ( "$b" );
+ 
+     unless ($b) { 
+         die "makerandom_itv needs 'Upper' parameter."
